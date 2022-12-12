@@ -24,6 +24,7 @@ export class OrdersController {
 
   @MessagePattern({ role: 'order', cmd: 'remove'})
   async delete(id: string) {
-    return this.ordersService.delete(id);
+    await this.ordersService.delete(id);
+    return true;
   }
 }
