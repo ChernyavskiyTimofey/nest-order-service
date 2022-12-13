@@ -1,5 +1,5 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common'
-import { CreateOrderDto } from './order.dto'
+import { Controller } from '@nestjs/common'
+import { OrderDTO } from './order.dto'
 import { MessagePattern } from '@nestjs/microservices';
 import { OrdersService } from './orders.service'
 
@@ -8,7 +8,7 @@ export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
 
   @MessagePattern({ role: 'order', cmd: 'create'})
-  async createOrder(dto: CreateOrderDto) {
+  async createOrder(dto: OrderDTO) {
     return this.ordersService.create(dto);
   }
 

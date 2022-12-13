@@ -6,6 +6,8 @@ import { Order } from './orders/order.entity';
 import { AppService } from './app.service';
 
 import { config } from 'dotenv';
+import { User } from './users/user.entity';
+import { UserModule } from './users/user.module';
 config();
 
 const { POSTGRES_HOST, POSTGRES_PORT, POSTGRES_USERNAME, POSTGRES_PASSWORD, POSTGRES_DATABASE } = process.env;
@@ -21,9 +23,10 @@ const { POSTGRES_HOST, POSTGRES_PORT, POSTGRES_USERNAME, POSTGRES_PASSWORD, POST
       database: POSTGRES_DATABASE,
       synchronize: true,
       autoLoadEntities: true,
-      entities:[Order],
+      entities:[Order, User],
     }),
-    OrdersModule
+    OrdersModule,
+    UserModule
   ],
   controllers: [AppController],
   providers: [AppService],

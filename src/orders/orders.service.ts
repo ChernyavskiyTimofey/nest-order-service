@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CreateOrderDto } from './order.dto';
+import { OrderDTO } from './order.dto';
 import { Order } from './order.entity';
 
 @Injectable()
@@ -23,7 +23,7 @@ export class OrdersService {
         await this.orderRepository.delete(id);
     }
 
-    async create(dto: CreateOrderDto) {
+    async create(dto: OrderDTO) {
         const order = this.orderRepository.create(dto);
         return this.orderRepository.save(order);
     }
